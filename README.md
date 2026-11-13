@@ -1,7 +1,6 @@
 # Kenya Digital Divide dashboard (Power BI)
 
-![Dashboard](kenya digital divide.png)
-
+![Dashboard](kenya%20digital%20divide.png)
 A Power BI dashboard showing **who is connected in Kenya, and who is left behind**. It uses official data from the **2019 Kenya Population and Housing Census** for all 47 counties.
 
 ## Key findings
