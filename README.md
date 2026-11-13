@@ -21,3 +21,20 @@ A Power BI dashboard showing **who is connected in Kenya, and who is left behind
 Data model: a `Counties` table (47 rows) related one-to-many to `Gender`, `SubCounties` and `AgeByCounty`, plus a Kenya-wide `UrbanRuralByAge` table.
 
 ## Key DAX measures
+
+~~~
+Internet % = DIVIDE(SUM(Counties[InternetUsers]), SUM(Counties[Pop3Plus]))
+Gender % = DIVIDE(SUM(Gender[People]), SUM(Gender[BasePopulation]))
+Gap vs Kenya = [Internet %] - CALCULATE([Internet %], ALL(Counties))
+Internet Rank = RANKX(ALL(Counties[County]), [Internet %], , DESC, Dense)
+Digital Divide Ratio = DIVIDE(MAXX(ALL(Counties[County]), [Internet %]), MINX(ALL(Counties[County]), [Internet %]))
+~~~
+Rates are calculated from people counts, not by averaging county percentages, so that large counties are weighted correctly.
+
+## Files
+- `Kenya Digital Divide.pbix`: Power BI report
+- `Kenya_Digital_Access_2019_Census.xlsx`: cleaned dataset
+- `kenya digital divide.png`: dashboard screenshot
+
+## Limitations
+Census data is a single snapshot (August 2019), so it shows differences between groups, not change over time.
